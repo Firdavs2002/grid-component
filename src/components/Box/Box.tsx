@@ -1,8 +1,24 @@
-import React, { FunctionComponent, ReactNode } from 'react';
+import React, { FunctionComponent, HTMLAttributes, ReactNode } from 'react';
 import styles from './Box.module.scss'
 
-const Box: FunctionComponent<{children: ReactNode}> = ({ children }) => {
-    return <div className={styles.Box}>{children}</div>;
+interface BoxProps {
+    children?: ReactNode
+    text?: string
+    color?: any
+    bgColor?: any
+    // inlineStyle?: React.CSSProperties | undefined,
+};
+
+const Box: FunctionComponent<BoxProps & HTMLAttributes<HTMLDivElement>> = ({
+    children,
+    text,
+    color,
+    bgColor
+    // inlineStyle
+}) => {
+
+    // const style<CSSProperties> = {color, bgColor}
+    return <div className={styles.Box} style={{color: color, backgroundColor: bgColor}}>{text || children}</div>;
 }
 
 export default Box;
